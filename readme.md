@@ -1,23 +1,14 @@
-# 💼 The Office
+# E-ink display
  
-## 🤸🏿👽🕵️ This repository is for people 🤸🤖🎅
+[kiosk_logo](https://user-images.githubusercontent.com/38838314/181353236-5e417ed1-1df2-4c0e-bae2-469f64a4351b.png)
+A little server application for rasbperry pi that show Kiosk QR-Codes on a little e-ink display. Useful for object photography.
 
-No matter for which field-project or which part of the software, it is here and only here in this repository where we all collaborate, report bugs and ideas, discuss ...
+### ⚙️ code repository
+- this is the virtual environment base directory for the e-ink display application. It runs on raspberry pi 3+.
+ 
+### 💼 please go to [the office](https://github.com/arch-kiosk/arch-kiosk-office) to file bugs, ideas, tickets, participate in discussion etc.
 
-## typical workplaces
-- [testers work here](https://github.com/arch-kiosk/arch-kiosk-office/projects/25)
+### 📓 documentation or information about where to find it is likewise in [the office](https://github.com/arch-kiosk/arch-kiosk-office).
 
-## other places
 
-📐 **wiki-based documentation can be found in [the kiosk wiki](https://wiki.arch-kiosk.brown.edu/urapdev/doku.php?id=start)**  (🔒 login needed)
-
-📓 **official documentation and manuals live here [yet to come...](https://wiki.arch-kiosk.brown.edu/urapdev/doku.php?id=start)**  
-
-💾 **The main code for kiosk is here: [kiosk](https://github.com/arch-kiosk/kiosk)**  
-
-🧨 **The code for filemaker recording lives here: [filemaker_recording](https://github.com/arch-kiosk/filemaker-recording)**  
-
-## how we organize our work
-This guide remindes us what tools and files we use especially during planning, customization and documentation:  
-📐 [how we organize our work and which tools and files we use](https://github.com/arch-kiosk/.github/blob/main/how_we_work.md)
 
