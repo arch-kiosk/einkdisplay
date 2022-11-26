@@ -20,12 +20,13 @@ SCALE = 1
 ERROR_CORRECTION = "H"  # can be "l", "M", "Q", "H" (7%, 15%, 25%, 30%=highest correction level)
 
 if os.name == 'posix':
-    libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+    libdir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'waveshare')
     if os.path.exists(libdir):
         sys.path.append(libdir)
-    from waveshare import epd1in54b as display
+    from waveshare import epd1in54 as display
 
     RaspPI = True
+    print("posix detected")
 
 
 def get_ip_addresses(must_include='192.168', debug_log=False):
@@ -70,24 +71,32 @@ def get_ip_addresses(must_include='192.168', debug_log=False):
 
 with app.app_context():
     addresses = get_ip_addresses()
-    for address in addresses:
-        print(f"running on {address}")
     if RaspPI and libdir:
         epd = display.EPD()
-        logging.info("init and Clear")
-        epd.init()
-        epd.Clear()
+        print("init and Clear")
+        epd.init(epd.lut_full_update)
+        epd.Clear(0xFF)
         time.sleep(1)
-        blackimage = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
-        redimage = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
+        print(f"lib is {libdir}")
+        image = Image.new('1', (epd.width, epd.height), 255)  # 255: clear the frame
 
-        font = ImageFont.truetype(os.path.join(libdir, 'Font.ttc'), 24)
-        font18 = ImageFont.truetype(os.path.join(libdir, 'Font.ttc'), 18)
+        draw = ImageDraw.Draw(image)
+        font = ImageFont.truetype(os.path.join(libdir, 'Font.ttc'), 22)
 
-        drawblack = ImageDraw.Draw(blackimage)
-        drawred = ImageDraw.Draw(redimage)
-        drawblack.rectangle((0, 10, 200, 34), fill=0)
-        drawblack.text((8, 12), 'hello world', font=font, fill=255)
+        # draw.rectangle((0, 10, 200, 34), fill=0)
+        draw.text((8, 12), f"Kiosk e-Ink Server", font=font, fill=0)
+        draw.text((8, 36), f"running on IP", font=font, fill=0)
+
+        line = 60
+        for address in addresses:
+            draw.text((8, line), f"{address}", font=font, fill=0)
+            line += 24
+
+        line += 24
+        draw.text((8, line), f"{epd.width} x {epd.height} detected", font=font, fill=0)
+        epd.display(epd.getbuffer(image.rotate(90)))
+        time.sleep(2)
+        epd.sleep()
 
 
 @app.route("/")

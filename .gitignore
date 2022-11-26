@@ -31,3 +31,4 @@ old_*/
 !/dev_requirements.txt
 !/apply-kiosk-acl.ps1
 !/requirements.txt
+*.swp
