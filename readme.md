@@ -1,6 +1,6 @@
 # E-ink display
  
-A little server application for rasbperry pi that show Kiosk QR-Codes on a little e-ink display. Useful for object photography.
+A little server application for rasbperry pi that shows Kiosk QR-Codes on a little e-ink display. Useful for object photography.
 
 ### ⚙️ code repository
 - this is the virtual environment base directory for the e-ink display application. It runs on raspberry pi 3+.
