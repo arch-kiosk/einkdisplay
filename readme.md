@@ -1,6 +1,5 @@
 # E-ink display
  
-[kiosk_logo](https://user-images.githubusercontent.com/38838314/181353236-5e417ed1-1df2-4c0e-bae2-469f64a4351b.png)
 A little server application for rasbperry pi that show Kiosk QR-Codes on a little e-ink display. Useful for object photography.
 
 ### ⚙️ code repository
