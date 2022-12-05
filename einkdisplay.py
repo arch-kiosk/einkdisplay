@@ -196,7 +196,6 @@ def show_on_square_display(data, font_size, labels, scale_type):
         qrcode = segno.make(data, micro=False)  # , error="H")
         qrcode_size = qrcode.symbol_size()[0]
         scale = round(
-            # for some reason substracting the font_boot_screen size from the height is not helpful
             (epd.width - (one_cm_wider * 1.5)) / qrcode_size
         )
 
@@ -280,7 +279,6 @@ def show_on_2_9_display(data, font_size, labels, scale_type, display_type):
     try:
         min_dimension = min(display_width, display_height) - one_cm_wider / 2
         scale = round(
-            # for some reason substracting the font_boot_screen size from the height is not helpful
             min_dimension / qrcode_size
         )
 
@@ -327,12 +325,6 @@ def show_on_2_9_display(data, font_size, labels, scale_type, display_type):
                 draw_scale(canvas, margin, margin, one_cm_wider / 2)
                 scale_end = margin + one_cm_wider / 2
 
-        # if orientation == "L":
-        #     print(f"width before rotate: {img_out.width}")
-        #     img_out = img_out.transpose(Image.ROTATE_90)
-        #     canvas = ImageDraw.Draw(img_out)
-        #     print(f"width after rotate: {img_out.width}")
-
         if font_label:
             if orientation == "P":
                 draw_label(canvas, labels, margin, scale_end + margin + img_qr_code.height, font_label)
@@ -347,6 +339,7 @@ def show_on_2_9_display(data, font_size, labels, scale_type, display_type):
         if orientation == "P":
             return img_out.rotate(0)
         else:
+
             return img_out.rotate(180)
     finally:
         try:
